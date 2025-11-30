@@ -35,12 +35,12 @@ analysis covers:
 
 - **Assignment05_analysis.Rmd** – Full reproducible analysis & plots  
 - **Assignment05_analysis.pdf** – Compiled PDF output  
-- **Cereals.csv** – Dataset used for the analysis  
+- **Cereals.csv** – Go to data outside the assignment
 - **README.md** – Project documentation  
 
 ---
 
-## 🛠️ Packages Used
+## Packages Used
 
 The following packages are required to knit the RMarkdown file:
 
