@@ -48,3 +48,27 @@ The following packages are required to knit the RMarkdown file:
 library(tidyverse)
 library(gridExtra)
 library(readr)
+```
+---
+
+## ▶️ How to Run
+
+To reproduce the analysis:
+
+1. Open the `.Rmd` file in **RStudio**.
+2. Ensure that **Cereals.csv** is placed in the same folder as the RMarkdown file.
+3. Install the required packages (if needed):
+   ```r
+   install.packages(c("tidyverse", "gridExtra", "readr"))```
+4. Click Knit → Knit to PDF in **RStudio**.
+
+Note:
+This document uses xelatex as the LaTeX engine, which requires a complete LaTeX distribution such as MacTeX, MikTeX, or TeXLive to be installed on your machine.
+
+---
+
+## Authors
+- Vera Gak Anagrova
+- Zhanica Arrindell
+- Aleksandra Tatko
+- Ly Le
