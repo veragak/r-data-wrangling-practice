@@ -83,10 +83,21 @@ install.packages(c("tidyverse", "ggplot2", "lubridate", "readr"))
 4. Knit the document to PDF.
 A LaTeX distribution (MacTeX / TeXLive / MikTeX) is required.
 
+---
 
-
+## Packages Used
+```r
 library(tidyverse)
 library(ggplot2)
 library(lubridate)
 library(readr)
 library(gridExtra)
+```
+---
+
+## Authors
+- Vera Gak Anagrova
+- Zhanica Arrindell
+- Aleksandra Tatko
+- Ly Le
+
