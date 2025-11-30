@@ -40,7 +40,7 @@ Percentages are rounded to two decimals.
 ## Files
 
 - `assignment01_analysis.R` — full solution using base R  
-- `BenAndJerry.csv` — dataset used (if available)
+- `BenAndJerry.csv` — dataset can be found in data
 
 ---
 
