@@ -10,7 +10,7 @@ original course material.
 
 ---
 
-## 📝 Tasks Covered
+## Tasks Covered
 
 ### **Task 1 — Average liter prices by brand and market (base R)**
 
@@ -48,7 +48,7 @@ original course material.
 
 ---
 
-## 📦 Required Packages
+## Required Packages
 
 This exercise uses:
 
