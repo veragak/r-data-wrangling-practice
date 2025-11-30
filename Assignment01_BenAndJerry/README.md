@@ -10,7 +10,7 @@ any original course material.
 
 ---
 
-## 📝 Tasks Covered
+## Tasks Covered
 
 ### **Task 1 — Compute unified unit prices**
 Create a single `unit_price` vector that combines deal and non-deal prices for
@@ -37,13 +37,13 @@ Percentages are rounded to two decimals.
 
 ---
 
-## 📂 Files
+## Files
 
 - `assignment01_analysis.R` — full solution using base R  
 - `BenAndJerry.csv` — dataset used (if available)
 
 ---
 
-## 📦 Requirements
+## Requirements
 This exercise uses **only base R**, no additional packages required.
 
