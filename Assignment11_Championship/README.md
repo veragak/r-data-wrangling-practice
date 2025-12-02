@@ -101,10 +101,11 @@ Repeated finalists accumulate both wins and losses—participation drives volume
 ## Repository Structure
 
 `Assignment11_Championship`
-  - Assignment11.Rmd          # Full analysis
+  - Assignment11_analysis.Rmd          # Full analysis
   - Assignment11b.pdf         # Compiled PDF
   - README.md                 # Project documentation
 
+---
 
 ## Required R Packages
 library(rvest)
