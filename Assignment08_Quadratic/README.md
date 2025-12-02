@@ -29,7 +29,7 @@ quadratic(x = 1:5)
 quadratic(x = 1:5, a = 5, b = -3, c = 1)
 quadratic("text")    # produces an error
 
-###2. solve_quadratic(a = 1, b = 1, c = 0)
+### 2. solve_quadratic(a = 1, b = 1, c = 0)
 
 - Solves the quadratic equation:
     𝑎𝑥2+𝑏𝑥+𝑐=0  using the quadratic formula.
