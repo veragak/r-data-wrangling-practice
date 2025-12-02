@@ -1,0 +1,165 @@
+---
+title: "Airline Quality"
+subtitle: "EB04 - Group 2"
+author:
+  - "Zhanica Arrindell (596427)"
+  - "Vera Gak Anagrova (772713)"
+  - "Aleksandra Tatko (648925)"
+  - "Ly Le (644801)"
+date: "`r format(Sys.Date(), '%B %d, %Y')`"
+output:
+  pdf_document:
+    latex_engine: xelatex
+    toc: true
+    toc_depth: 2
+    number_sections: true
+    highlight: tango
+---
+
+```{r warning=FALSE, include=FALSE}
+# Load the libraries
+library(rvest)
+library(dplyr)
+library(knitr)
+library(ggplot2)
+library(tidyr)
+```
+
+# Task 1
+
+```{r}
+# Define a function to scrape overall rating and number of reviews 
+scrape_ratings <- function(url) {
+  page <- read_html(url)  # Read the HTML content of the webpage
+  
+  text <- page %>%
+    html_nodes(".customer-rating-total, .review-count") %>%  
+    html_text() 
+  
+  # Use regex to extract only numeric values from the text
+  nums <- regmatches(text, gregexpr("[0-9]+", text))
+  
+  # First number corresponds to the total number of reviews
+  reviews <- as.numeric(nums[[1]][1])  
+  
+  # Combine two numbers (e.g., 5 and 10) to form a decimal rating 5.10
+  rating <- as.numeric(paste(nums[[2]][1], nums[[2]][2], sep = ".")) 
+  
+  # Return both the number of reviews and rating as a numeric vector
+  return(c(reviews, rating)) 
+}
+
+# --- List of URLs for the three airlines ---
+urls <- c(
+  "https://www.airlinequality.com/airline-reviews/klm-royal-dutch-airlines/",  
+  "https://www.airlinequality.com/airline-reviews/air-france/",       
+  "https://www.airlinequality.com/airline-reviews/transavia/"         
+)
+
+# Apply the scraping function to each airline URL 
+results <- t(sapply(urls, scrape_ratings))  
+
+# Add column and row names for clarity 
+colnames(results) <- c("Number of reviews", "Rating")  
+rownames(results) <- c("KLM", "Air France", "Transavia")  
+
+# Convert results to a data frame 
+airline_ratings <- as.data.frame(results)
+
+kable(airline_ratings, caption = "Airline ratings (extracted from AirlineQuality.com)")
+
+```
+
+**Interpretation**: KLM and Air France both have similar overall ratings around 5/10, while Transavia scores slightly lower.
+However, KLM has received the largest number of reviews, suggesting it has the broadest customer base among the three.
+The relatively low ratings across all three airlines may indicate general customer dissatisfaction with service quality or recent operational challenges.
+
+# Task 2
+
+```{r}
+# Define a helper function to scrape the 5 category ratings 
+scrape_avg_ratings <- function(url, airline) {
+  
+  # Read and parse the page
+  html <- read_html(url)
+  
+  # Extract visible numeric star ratings
+  stars_raw <- html %>% 
+    html_nodes(".stars .fill") %>% 
+    html_text(trim = TRUE)
+  
+  stars_num <- as.numeric(stars_raw)
+  
+  # Identify where the sequence 1,2,3,4,5 first repeats
+  pattern_pos <- which(
+    sapply(1:(length(stars_num)-4), function(i)
+      all(stars_num[i:(i+4)] == 1:5))
+  )[1]
+  
+  # Keep only the values before that repeating pattern
+  relevant <- stars_num[1:(pattern_pos - 1)]
+  
+  # Select the last value before each restart (1 indicates new category)
+  peaks <- c(relevant[-1] == 1, TRUE)
+  averages <- relevant[peaks][1:5]
+  
+  # Store results in a clean data frame
+  data.frame(
+    Airline = airline,
+    Food_Beverages = averages[1],
+    Inflight_Entertainment = averages[2],
+    Seat_Comfort = averages[3],
+    Staff_Service = averages[4],
+    Value_for_Money = averages[5]
+  )
+}
+
+# List of airlines and URLs 
+airlines_info <- list(
+  "KLM Royal Dutch Airlines" = "https://www.airlinequality.com/airline-reviews/klm-royal-dutch-airlines/",
+  "Air France" = "https://www.airlinequality.com/airline-reviews/air-france/",
+  "Transavia" = "https://www.airlinequality.com/airline-reviews/transavia/"
+)
+
+# Apply the scraping function to all airlines 
+average_ratings <- bind_rows(
+  lapply(names(airlines_info), function(name)
+    scrape_avg_ratings(airlines_info[[name]], name))
+)
+
+#Show results 
+kable(average_ratings, caption = "Average ratings per airline (extracted from AirlineQuality.com)")
+```
+
+# Task 3
+
+```{r}
+# --- Reshape the data for plotting ---
+ratings_long <- average_ratings %>%
+  pivot_longer(
+    cols = c(Food_Beverages, Inflight_Entertainment, Seat_Comfort, 
+             Staff_Service, Value_for_Money),
+    names_to = "Category",
+    values_to = "Rating"
+  )
+
+# --- Create the grouped bar plot ---
+ggplot(ratings_long, aes(x = Airline, y = Rating, fill = Category)) +
+  geom_bar(stat = "identity", position = "dodge") +  
+  scale_fill_brewer(palette = "Set2") +              
+  labs(
+    title = "Average Ratings by Service Category and Airline",
+    x = NULL,
+    y = "Average Rating (out of 5)",
+    fill = "Category"
+  ) +
+  theme_minimal(base_size = 12) +                    
+  theme(
+    legend.position = "bottom",                     
+    plot.title = element_text(face = "bold", hjust = 0.5), 
+    axis.text.x = element_text(angle = 10, vjust = 1, hjust = 1)
+  )
+```
+
+The grouped bar chart highlights that Seat Comfort and Staff Service consistently score the highest across all three airlines, while Value for Money and Inflight Entertainment are rated lower.
+KLM and Air France display nearly identical performance patterns, whereas Transavia shows slightly weaker ratings in entertainment and food categories, reflecting its budget carrier business model.
