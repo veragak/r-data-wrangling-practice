@@ -5,6 +5,6 @@ This assignment implements two custom R functions using only **base R**, followi
 ---
 
 ## Repository Structure
-`Assignment08/`
+`Assignment08_Quadratic`
 - Assignment08_analysis.R # Main script with both functions and required tests
 - README.md # Project documentation
