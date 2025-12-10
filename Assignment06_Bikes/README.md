@@ -67,7 +67,7 @@ The analysis covers four main components:
 ## Files in This Folder
 - `Assignment6_analysis.Rmd`: Full reproducible RMarkdown solution |
 - `Assignment6b_analysis.pdf`: Rendered PDF version of the assignment |
-- `Bikes_Washington.csv`: Dataset used throughout the analysis found in data/ folder outside
+- The dataset used in this project cannot be shared due to course policies.
 - `README.md`: Documentation for the project 
 
 ---
