@@ -18,4 +18,5 @@ Each assignment is contained in its own folder with:
 
 - a clean R script  
 - a short README describing the tasks  
-- (optional) datasets or links  
+- The datasets used in this project cannot be shared due to course policies
+
