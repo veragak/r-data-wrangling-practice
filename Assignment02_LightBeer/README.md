@@ -44,7 +44,7 @@ original course material.
 ## 📂 Files
 
 - `assignment02_analysis.R` — full solution using base R + tidyverse
-- (optional) `../data/LightBeer.csv` — dataset used for the exercise
+- The dataset used in this project cannot be shared due to course policies.
 
 ---
 
