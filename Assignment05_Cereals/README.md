@@ -10,8 +10,8 @@ repository and contain no original course material.
 
 ## Overview
 
-Using the `Cereals.csv` dataset (77 cereals from multiple manufacturers), the 
-analysis covers:
+The dataset used in this project cannot be shared due to course policies.
+
 
 ### **A. Calorie-based rating comparison**
 - Creation of an ordered factor `cal_level` with five calorie categories  
