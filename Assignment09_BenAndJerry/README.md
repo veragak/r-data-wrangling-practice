@@ -10,7 +10,7 @@ The goal is to compute summary statistics, price differences, and purchase frequ
 - `Assignment09_BenAndJerry`
     - `Assignment09_analysis.R` # Main R script with all solutions
     -  `README.md` # Project documentation
-    - `../data/BenAndJerry.RData` — dataset used (stored in a common data folder)
+    - The dataset used in this project cannot be shared due to course policies
 
 ---
 
