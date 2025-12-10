@@ -76,7 +76,7 @@ two separate main artists (A and B), not as a single combined name.
 
 - `Assignment7.R` — original script name required for submission  
 - `assignment07_hot100.R` — cleaned script for this repository  
-- `../data/hot100.RData` — dataset used (stored in a common `data` folder)  
+- The dataset used in this project cannot be shared due to course policies
 - `README.md` — this documentation  
 
 ---
