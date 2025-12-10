@@ -41,7 +41,7 @@ contain original course material.
 ## 📂 Files
 
 - `assignment04_analysis.R` — full solution using lubridate + tidyverse  
-- `../data/flights.RData` — dataset used (placed in shared data folder)
+- The dataset used in this project cannot be shared due to course policies.
 
 ---
 
